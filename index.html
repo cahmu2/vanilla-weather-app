@@ -16,8 +16,56 @@
   </head>
   <body>
     <div class="container">
-      <h1>Hello World</h1>
-      <a href="" class="btn btn-primary">click me</a>
+      <div class="weather-app-wrapper">
+        <div class="row g-3">
+          <div class="col-sm-7">
+            <input
+              type="search"
+              class="form-control shadow-sm"
+              placeholder="Enter City..."
+              autofocus="on"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col-sm">
+            <input
+              type="submit"
+              class="form-control btn btn-outline-success shadow-sm"
+              value="Search"
+            />
+          </div>
+          <div class="col-sm">
+            <button
+              class="btn btn-outline-success shadow-sm w-100"
+              id="current-button"
+            >
+              Current
+            </button>
+          </div>
+        </div>
+        <h1>Brisbane</h1>
+        <br />
+        <div><i class="fa-solid fa-sun sun"></i></div>
+        <div class="current-temperature">
+          <ul>
+            <li>23</li>
+            <li>°C</li>
+            <li>Monday</li>
+            <li>22:13</li>
+          </ul>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-4">Humidity<br />86%</div>
+          <div class="col-4">Wind<br />km/h</div>
+          <div class="col-4">Feels Like<br />24</div>
+        </div>
+      </div>
+      <small>
+        <a href="https://github.com/cahmu2/vanilla-weather-app" target="_blank"
+          >Open-source code</a
+        > </small
+      >by Caitlyn Ahmu
     </div>
     <script src="src/app.js"></script>
   </body>
