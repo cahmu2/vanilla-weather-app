@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
       src="https://kit.fontawesome.com/f8fcecf342.js"
       crossorigin="anonymous"
@@ -57,24 +58,30 @@
             <div class="heading">
               <img src="images/mesh.png" alt="mesh gradient" />
               <div class="heading-text">
-                <span class="city">Brisbane</span>
+                <span id="city"></span>
                 <br />
                 <span><i class="fa-solid fa-sun"></i></span>
               </div>
             </div>
             <div>
               <ul>
-                <li class="temperature">23</li>
+                <li id="temperature"></li>
                 <li class="degrees">°C</li>
-                <li class="day">Monday</li>
-                <li class="date">22:13</li>
+                <li class="day">Monday 22:13</li>
+                <li id="description"></li>
               </ul>
             </div>
             <div class="line"><hr /></div>
             <div class="row weather-forecast">
-              <div class="col-4"><strong>Humidity</strong><br />86%</div>
-              <div class="col-4"><strong>Wind</strong><br />km/h</div>
-              <div class="col-4"><strong>Feels Like</strong><br />24</div>
+              <div class="col-4">
+                <strong>Humidity</strong><br /><span id="humidity"></span>%
+              </div>
+              <div class="col-4">
+                <strong>Wind</strong><br /><span id="wind"></span> Km/H
+              </div>
+              <div class="col-4">
+                <strong>Feels Like</strong><br /><span id="feel"></span>
+              </div>
             </div>
           </section>
           <div class="row weekly-outcome">

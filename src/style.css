@@ -33,7 +33,7 @@ li {
   width: 100%;
   text-transform: uppercase;
 }
-.temperature {
+#temperature {
   font-size: 75px;
   line-height: 1.2;
 }
@@ -41,8 +41,9 @@ li {
   font-size: 20px;
 }
 .day,
-.date {
+#description {
   font-size: 35px;
+  text-transform: capitalize;
 }
 .line,
 .weather-forecast {
@@ -62,8 +63,12 @@ li {
   text-align: right;
 }
 li,
-.city {
+#city {
   font-family: "Yeseva One", cursive;
+}
+#temperature {
+  font-size: 75px;
+  line-height: 1.2;
 }
 #enter-city {
   background-color: #fdefd5;
