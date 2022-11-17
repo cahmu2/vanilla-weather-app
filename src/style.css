@@ -1,0 +1,70 @@
+img {
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+ul {
+  padding-left: 0;
+}
+li {
+  list-style: none;
+  text-align: center;
+}
+.weather-app-wrapper {
+  margin: 20px auto;
+  max-width: 850px;
+}
+.weather-app {
+  padding: 40px;
+  background-color: #fdefd5;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+}
+.heading {
+  font-size: 60px;
+  position: relative;
+}
+.heading-text {
+  position: absolute;
+  top: calc(50% - 60px);
+  left: 0;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+}
+.temperature {
+  font-size: 75px;
+  line-height: 1.2;
+}
+.degrees {
+  font-size: 20px;
+}
+.day,
+.date {
+  font-size: 35px;
+}
+.line,
+.weather-forecast {
+  padding: 0 30%;
+}
+.weather-forecast {
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.weekly-outcome,
+.line-bottom {
+  padding: 0 10%;
+}
+.weather-forecast-temperature-max,
+.weather-forecast-day {
+  text-align: right;
+}
+li,
+.city {
+  font-family: "Yeseva One", cursive;
+}
+#enter-city {
+  background-color: #fdefd5;
+}
