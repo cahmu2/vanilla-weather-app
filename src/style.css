@@ -11,6 +11,9 @@ li {
   list-style: none;
   text-align: center;
 }
+li:first-letter {
+  text-transform: capitalize;
+}
 .weather-app-wrapper {
   margin: 20px auto;
   max-width: 850px;
@@ -40,10 +43,9 @@ li {
 .degrees {
   font-size: 20px;
 }
-.day,
+#date,
 #description {
   font-size: 35px;
-  text-transform: capitalize;
 }
 .line,
 .weather-forecast {
