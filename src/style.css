@@ -1,9 +1,3 @@
-img {
-  width: 400px;
-  display: block;
-  margin: 0 auto;
-  padding-top: 30px;
-}
 ul {
   padding-left: 0;
 }
@@ -28,6 +22,12 @@ li:first-letter {
   font-size: 60px;
   position: relative;
 }
+.mesh {
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 30px;
+}
 .heading-text {
   position: absolute;
   top: calc(50% - 60px);
@@ -36,13 +36,7 @@ li:first-letter {
   width: 100%;
   text-transform: uppercase;
 }
-#temperature {
-  font-size: 75px;
-  line-height: 1.2;
-}
-.degrees {
-  font-size: 20px;
-}
+
 #date,
 #description {
   font-size: 35px;
@@ -68,10 +62,17 @@ li,
 #city {
   font-family: "Yeseva One", cursive;
 }
+
+#enter-city {
+  background-color: #fdefd5;
+}
 #temperature {
   font-size: 75px;
   line-height: 1.2;
 }
-#enter-city {
-  background-color: #fdefd5;
+#degrees {
+  font-size: 20px;
+}
+#icon {
+  width: 140px;
 }
