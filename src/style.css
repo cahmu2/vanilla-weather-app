@@ -8,6 +8,11 @@ li {
 li:first-letter {
   text-transform: capitalize;
 }
+a {
+  text-decoration: none;
+  color: #198754;
+}
+
 .weather-app-wrapper {
   margin: 20px auto;
   max-width: 850px;
@@ -34,6 +39,10 @@ li:first-letter {
   text-align: center;
   width: 100%;
   text-transform: uppercase;
+}
+.heading-text .active {
+  color: #331832;
+  cursor: default;
 }
 
 #date,
