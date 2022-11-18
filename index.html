@@ -27,33 +27,35 @@
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
-          <div class="row g-3">
-            <div class="col-sm-7">
-              <input
-                type="search"
-                id="enter-city"
-                class="form-control shadow-sm"
-                placeholder="Enter City..."
-                autofocus="on"
-                autocomplete="off"
-              />
+          <form id="search-form" class="mb-3">
+            <div class="row g-3">
+              <div class="col-sm-7">
+                <input
+                  type="search"
+                  id="enter-city"
+                  class="form-control shadow-sm"
+                  placeholder="Enter City..."
+                  autofocus="on"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="col-sm">
+                <input
+                  type="submit"
+                  class="form-control btn btn-outline-success shadow-sm"
+                  value="Search"
+                />
+              </div>
+              <div class="col-sm">
+                <button
+                  class="btn btn-outline-success shadow-sm w-100"
+                  id="current-button"
+                >
+                  Current
+                </button>
+              </div>
             </div>
-            <div class="col-sm">
-              <input
-                type="submit"
-                class="form-control btn btn-outline-success shadow-sm"
-                value="Search"
-              />
-            </div>
-            <div class="col-sm">
-              <button
-                class="btn btn-outline-success shadow-sm w-100"
-                id="current-button"
-              >
-                Current
-              </button>
-            </div>
-          </div>
+          </form>
           <section>
             <div class="heading">
               <img class="mesh" src="images/mesh.png" alt="mesh gradient" />
