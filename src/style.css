@@ -18,6 +18,7 @@ a {
   max-width: 850px;
 }
 .weather-app {
+  margin-bottom: 10px;
   padding: 40px;
   background-color: #fdefd5;
   border-radius: 0.25rem;
@@ -67,7 +68,8 @@ a {
   text-align: right;
 }
 li,
-#city {
+#city,
+.strong {
   font-family: "Yeseva One", cursive;
 }
 
@@ -83,4 +85,10 @@ li,
 }
 #icon {
   width: 140px;
+}
+#humidity,
+#wind,
+#feel,
+small {
+  font-family: "Nunito", sans-serif;
 }
