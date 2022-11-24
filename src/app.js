@@ -21,6 +21,35 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = "";
+  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="row">
+      <div class="col-sm-3">
+        <div class="weather-forecast-temperature-max">
+          <strong>21°</strong>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="weather-forecast-temperature-min">8°</div>
+      </div>
+      <div class="col-sm-3">
+        <div class="weather-forecast-day">${day}</div>
+      </div>
+      <div class="col-sm-3">
+        <div class="icon"><i class="fa-solid fa-sun sunny"></i></div>
+      </div>
+      <div><hr /></div>
+    </div>`;
+  });
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -71,10 +100,10 @@ function displayFahrenheitTemperature(event) {
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
 
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
@@ -88,3 +117,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Sydney");
+displayForecast();
