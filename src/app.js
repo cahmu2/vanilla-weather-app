@@ -21,33 +21,69 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "";
-  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="row">
-      <div class="col-sm-3">
-        <div class="weather-forecast-temperature-max">
-          <strong>21°</strong>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="weather-forecast-temperature-min">8°</div>
-      </div>
-      <div class="col-sm-3">
-        <div class="weather-forecast-day">${day}</div>
-      </div>
-      <div class="col-sm-3">
-        <div class="icon"><i class="fa-solid fa-sun sunny"></i></div>
-      </div>
-      <div><hr /></div>
-    </div>`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="weather-forecast-temperature-max">
+                <strong>${Math.round(forecastDay.temperature.maximum)}</strong>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="weather-forecast-temperature-min">${Math.round(
+                forecastDay.temperature.minimum
+              )}</div>
+            </div>
+            <div class="col-sm-3">
+              <div class="weather-forecast-day">${formatDay(
+                forecastDay.time
+              )}</div>
+            </div>
+            <div class="col-sm-3">
+              <img 
+              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                forecastDay.condition.icon
+              }.png"
+              width="40px" 
+              />
+            </div>
+            <div><hr /></div>
+          </div>
+        `;
+    }
   });
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "70dc5fao6aa0c646b8bdt32cc4f4e3f5";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(response) {
@@ -74,6 +110,8 @@ function displayTemperature(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.description);
+
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -100,12 +138,13 @@ function displayFahrenheitTemperature(event) {
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
+
+let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
@@ -117,4 +156,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Sydney");
-displayForecast();
