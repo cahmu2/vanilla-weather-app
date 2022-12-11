@@ -51,13 +51,13 @@ function displayForecast(response) {
           <div class="row">
             <div class="col-sm-3">
               <div class="weather-forecast-temperature-max">
-                <strong>${Math.round(forecastDay.temperature.maximum)}</strong>
+                <strong>${Math.round(forecastDay.temperature.maximum)}°</strong>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="weather-forecast-temperature-min">${Math.round(
                 forecastDay.temperature.minimum
-              )}</div>
+              )}°</div>
             </div>
             <div class="col-sm-3">
               <div class="weather-forecast-day">${formatDay(
@@ -87,6 +87,8 @@ function getForecast(coordinates) {
 }
 
 function displayTemperature(response) {
+  celsius = response.data.temperature.current;
+
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -96,13 +98,11 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  celsiusTemperature = response.data.temperature.current;
-
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(celsius);
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
-  windElement.innerHTML = Math.round(response.data.wind.speed);
+  windElement.innerHTML = response.data.wind.speed;
   feelElement.innerHTML = Math.round(response.data.temperature.feels_like);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute(
@@ -126,33 +126,20 @@ function handleSubmit(event) {
   search(enterCityElement.value);
 }
 
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+function showPosition(position) {
+  let apiKey = "70dc5fao6aa0c646b8bdt32cc4f4e3f5";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayTemperature);
 }
 
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+function displayCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(showPosition);
 }
-
-let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
+let currentButton = document.querySelector("#current-button");
+currentButton.addEventListener("click", displayCurrentPosition);
 
 search("Sydney");
